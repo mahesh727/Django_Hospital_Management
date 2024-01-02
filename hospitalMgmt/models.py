@@ -21,15 +21,20 @@ class Doctor(models.Model):
 
 class Patient(models.Model):
     name = models.CharField(max_length=255)
-    contact_number = models.CharField(max_length=15)
+    contact_number = models.CharField(max_length=10)
     hospital = models.ForeignKey(Hospital, on_delete=models.CASCADE)
     disease = models.ForeignKey(Disease, on_delete=models.CASCADE)
     doctor = models.ForeignKey(Doctor, on_delete=models.CASCADE)
-    status = models.CharField(max_length=50)
 
 class PatientStatusUpdate(models.Model):
+    STATUS_CHOICES = [
+        ('Primary_Check','Primary_Check'),
+        ('Consultation','Consultation'),
+        ('Admitted','Admitted'),
+        ('Under_treatment','Under_treatment'),
+        ('Discharged','Discharged')
+    ]
     patient = models.ForeignKey(Patient, on_delete=models.CASCADE)
-    update_type = models.CharField(max_length=50)
+    update_type = models.CharField(max_length=20, choices=STATUS_CHOICES)
     remarks = models.TextField()
     timestamp = models.DateTimeField(auto_now_add=True)
-

@@ -25,15 +25,15 @@ class DoctorSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
     def create(self, validated_data):
-        # Extract the nested department data and create or get the department instance
+       
         department_data = validated_data.pop('department')
         department_instance, created = Department.objects.get_or_create(**department_data)
 
-        # Use the department instance to create the doctor
+        
         doctor_instance = Doctor.objects.create(department=department_instance, **validated_data)
         return doctor_instance
 
-class PatientSerializer(serializers.ModelSerializer):
+'''class PatientSerializer(serializers.ModelSerializer):
     hospital = HospitalSerializer()
     disease = DiseaseSerializer()
     doctor = DoctorSerializer()
@@ -55,7 +55,11 @@ class PatientSerializer(serializers.ModelSerializer):
 
         # Use the instances to create the patient
         patient_instance = Patient.objects.create(hospital=hospital_instance, disease=disease_instance, doctor=doctor_instance, **validated_data)
-        return patient_instance
+        return patient_instance'''
+class PatientSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Patient
+        fields = '__all__'
 
 class PatientStatusUpdateSerializer(serializers.ModelSerializer):
     class Meta:
