@@ -1,10 +1,5 @@
 from django.db import models
 
-# Create your models here.
-
-# models.py
-from django.db import models
-
 class Hospital(models.Model):
     name = models.CharField(max_length=255)
     location = models.CharField(max_length=255)
@@ -18,6 +13,7 @@ class Disease(models.Model):
 class Doctor(models.Model):
     name = models.CharField(max_length=255)
     department = models.ForeignKey(Department, on_delete=models.CASCADE)
+        hospital = models.ForeignKey(Hospital, on_delete=models.CASCADE)
 
 class Patient(models.Model):
     name = models.CharField(max_length=255)
