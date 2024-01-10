@@ -10,6 +10,6 @@ urlpatterns = [
     path('login/', Login.as_view(), name='login'),
 
     path('get-hospital/',GetHospital.as_view(),name='get-hospital'),
-    path('get-doctor/<int:patient_id>/',GetDcotor.as_view(),name='get-doctor'),
+    path('get-doctor/<int:hospital_id>/',GetDcotor.as_view(),name='get-doctor'),
     path('get-disease/',GetDisease.as_view(),name='get-disease'),
 ]
