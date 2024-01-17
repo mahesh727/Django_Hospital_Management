@@ -83,7 +83,7 @@ WSGI_APPLICATION = 'Hospital_Management_System.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'Hospital',
+        'NAME': 'Hospital2',
         'HOST':'127.0.0.1',
         'PORT':'3306',
         'USER':'root',
@@ -116,7 +116,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Kolkata'
 
 USE_I18N = True
 

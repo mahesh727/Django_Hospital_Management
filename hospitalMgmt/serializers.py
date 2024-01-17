@@ -1,6 +1,6 @@
 # serializers.py
 from rest_framework import serializers
-from .models import Hospital, Department, Disease, Doctor, Patient, PatientStatusUpdate
+from .models import Hospital, Department, Disease, Doctor, Patient, PatientRecord
 
 class HospitalSerializer(serializers.ModelSerializer):
     class Meta:
@@ -18,20 +18,20 @@ class DiseaseSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class DoctorSerializer(serializers.ModelSerializer):
-    department = DepartmentSerializer()
+    #department = DepartmentSerializer()
 
     class Meta:
         model = Doctor
         fields = '__all__'
 
-    def create(self, validated_data):
+    '''def create(self, validated_data):
        
         department_data = validated_data.pop('department')
         department_instance, created = Department.objects.get_or_create(**department_data)
 
         
         doctor_instance = Doctor.objects.create(department=department_instance, **validated_data)
-        return doctor_instance
+        return doctor_instance'''
 
 '''class PatientSerializer(serializers.ModelSerializer):
     hospital = HospitalSerializer()
@@ -61,8 +61,8 @@ class PatientSerializer(serializers.ModelSerializer):
         model = Patient
         fields = '__all__'
 
-class PatientStatusUpdateSerializer(serializers.ModelSerializer):
+class PatientRecordSerializer(serializers.ModelSerializer):
     class Meta:
-        model = PatientStatusUpdate
+        model = PatientRecord
         fields = '__all__'
 
